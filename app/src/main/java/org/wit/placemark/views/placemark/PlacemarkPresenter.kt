@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import org.wit.placemark.databinding.ActivityPlacemarkBinding
+import org.wit.placemark.databinding.EmployeeInfoBinding
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.Location
 import org.wit.placemark.models.PlacemarkModel
@@ -17,7 +17,7 @@ class PlacemarkPresenter(private val view: PlacemarkView) {
 
     var placemark = PlacemarkModel()
     var app: MainApp = view.application as MainApp
-    var binding: ActivityPlacemarkBinding = ActivityPlacemarkBinding.inflate(view.layoutInflater)
+    var binding: EmployeeInfoBinding = EmployeeInfoBinding.inflate(view.layoutInflater)
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     var edit = false;

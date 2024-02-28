@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import org.wit.placemark.R
-import org.wit.placemark.databinding.ActivityPlacemarkBinding
+import org.wit.placemark.databinding.EmployeeInfoBinding
 import org.wit.placemark.models.PlacemarkModel
 import timber.log.Timber.Forest.i
 
 class PlacemarkView : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPlacemarkBinding
+    private lateinit var binding: EmployeeInfoBinding
     private lateinit var presenter: PlacemarkPresenter
     var placemark = PlacemarkModel()
 
@@ -22,7 +22,7 @@ class PlacemarkView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-        binding = ActivityPlacemarkBinding.inflate(layoutInflater)
+        binding = EmployeeInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
@@ -30,12 +30,12 @@ class PlacemarkView : AppCompatActivity() {
         presenter = PlacemarkPresenter(this)
 
         binding.chooseImage.setOnClickListener {
-            presenter.cachePlacemark(binding.placemarkTitle.text.toString(), binding.description.text.toString())
+            presenter.cachePlacemark(binding.employeeName.text.toString(), binding.employeeBio.text.toString())
             presenter.doSelectImage()
         }
 
         binding.placemarkLocation.setOnClickListener {
-            presenter.cachePlacemark(binding.placemarkTitle.text.toString(), binding.description.text.toString())
+            presenter.cachePlacemark(binding.employeeName.text.toString(), binding.employeeBio.text.toString())
             presenter.doSetLocation()
         }
     }
@@ -50,12 +50,12 @@ class PlacemarkView : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_save -> {
-                if (binding.placemarkTitle.text.toString().isEmpty()) {
+                if (binding.employeeName.text.toString().isEmpty()) {
                     Snackbar.make(binding.root, R.string.enter_placemark_title, Snackbar.LENGTH_LONG)
                         .show()
                 } else {
                     // presenter.cachePlacemark(binding.placemarkTitle.text.toString(), binding.description.text.toString())
-                    presenter.doAddOrSave(binding.placemarkTitle.text.toString(), binding.description.text.toString())
+                    presenter.doAddOrSave(binding.employeeName.text.toString(), binding.employeeBio.text.toString())
                 }
             }
             R.id.item_delete -> {
@@ -69,8 +69,8 @@ class PlacemarkView : AppCompatActivity() {
     }
 
     fun showPlacemark(placemark: PlacemarkModel) {
-        binding.placemarkTitle.setText(placemark.title)
-        binding.description.setText(placemark.description)
+        binding.employeeName.setText(placemark.title)
+        binding.employeeBio.setText(placemark.description)
         Picasso.get()
             .load(placemark.image)
             .into(binding.placemarkImage)

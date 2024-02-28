@@ -2,7 +2,6 @@ package org.wit.placemark.main
 
 import android.app.Application
 import org.wit.placemark.models.PlacemarkJSONStore
-import org.wit.placemark.models.PlacemarkMemStore
 import org.wit.placemark.models.PlacemarkStore
 import timber.log.Timber
 import timber.log.Timber.Forest.i
