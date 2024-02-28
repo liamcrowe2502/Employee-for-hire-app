@@ -6,7 +6,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import org.wit.placemark.views.placemark.PlacemarkView
 import org.wit.placemark.main.MainApp
-import org.wit.placemark.models.PlacemarkModel
+import org.wit.placemark.models.EmployeeModel
 import org.wit.placemark.views.map.PlacemarkMapView
 
 class PlacemarkListPresenter(val view: PlacemarkListView) {
@@ -29,7 +29,7 @@ class PlacemarkListPresenter(val view: PlacemarkListView) {
         refreshIntentLauncher.launch(launcherIntent)
     }
 
-    fun doEditPlacemark(placemark: PlacemarkModel, pos: Int) {
+    fun doEditPlacemark(placemark: EmployeeModel, pos: Int) {
         val launcherIntent = Intent(view, PlacemarkView::class.java)
         launcherIntent.putExtra("placemark_edit", placemark)
         position = pos

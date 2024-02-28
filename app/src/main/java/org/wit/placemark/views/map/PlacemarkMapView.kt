@@ -8,7 +8,7 @@ import com.squareup.picasso.Picasso
 import org.wit.placemark.databinding.ActivityPlacemarkMapsBinding
 import org.wit.placemark.databinding.ContentPlacemarkMapsBinding
 import org.wit.placemark.main.MainApp
-import org.wit.placemark.models.PlacemarkModel
+import org.wit.placemark.models.EmployeeModel
 
 class PlacemarkMapView : AppCompatActivity() , GoogleMap.OnMarkerClickListener{
 
@@ -33,9 +33,9 @@ class PlacemarkMapView : AppCompatActivity() , GoogleMap.OnMarkerClickListener{
             presenter.doPopulateMap(it)
         }
     }
-    fun showPlacemark(placemark: PlacemarkModel) {
-        contentBinding.currentTitle.text = placemark.title
-        contentBinding.currentDescription.text = placemark.description
+    fun showPlacemark(placemark: EmployeeModel) {
+        contentBinding.currentTitle.text = placemark.name
+        contentBinding.currentDescription.text = placemark.bio
         Picasso.get()
             .load(placemark.image)
             .into(contentBinding.currentImage)

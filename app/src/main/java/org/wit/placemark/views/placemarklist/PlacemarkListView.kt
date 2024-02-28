@@ -10,7 +10,7 @@ import org.wit.placemark.adapters.PlacemarkAdapter
 import org.wit.placemark.adapters.PlacemarkListener
 import org.wit.placemark.databinding.ActivityPlacemarkListBinding
 import org.wit.placemark.main.MainApp
-import org.wit.placemark.models.PlacemarkModel
+import org.wit.placemark.models.EmployeeModel
 
 class PlacemarkListView : AppCompatActivity(), PlacemarkListener {
 
@@ -46,7 +46,7 @@ class PlacemarkListView : AppCompatActivity(), PlacemarkListener {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onPlacemarkClick(placemark: PlacemarkModel, position: Int) {
+    override fun onPlacemarkClick(placemark: EmployeeModel, position: Int) {
         this.position = position
         presenter.doEditPlacemark(placemark, this.position)
     }

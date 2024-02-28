@@ -9,14 +9,14 @@ import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import org.wit.placemark.R
 import org.wit.placemark.databinding.EmployeeInfoBinding
-import org.wit.placemark.models.PlacemarkModel
+import org.wit.placemark.models.EmployeeModel
 import timber.log.Timber.Forest.i
 
 class PlacemarkView : AppCompatActivity() {
 
     private lateinit var binding: EmployeeInfoBinding
     private lateinit var presenter: PlacemarkPresenter
-    var placemark = PlacemarkModel()
+    var placemark = EmployeeModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,9 +68,11 @@ class PlacemarkView : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun showPlacemark(placemark: PlacemarkModel) {
-        binding.employeeName.setText(placemark.title)
-        binding.employeeBio.setText(placemark.description)
+    fun showPlacemark(placemark: EmployeeModel) {
+        binding.employeeName.setText(placemark.name)
+        binding.employeeBio.setText(placemark.bio)
+        binding.email.setText(placemark.email)
+        binding.phoneNum.setText(placemark.phone)
         Picasso.get()
             .load(placemark.image)
             .into(binding.placemarkImage)

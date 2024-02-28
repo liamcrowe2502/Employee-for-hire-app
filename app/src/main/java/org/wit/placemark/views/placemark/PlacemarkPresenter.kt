@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import org.wit.placemark.databinding.EmployeeInfoBinding
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.Location
-import org.wit.placemark.models.PlacemarkModel
+import org.wit.placemark.models.EmployeeModel
 import org.wit.placemark.showImagePicker
 import org.wit.placemark.views.editlocation.EditLocationView
 import timber.log.Timber
 
 class PlacemarkPresenter(private val view: PlacemarkView) {
 
-    var placemark = PlacemarkModel()
+    var placemark = EmployeeModel()
     var app: MainApp = view.application as MainApp
     var binding: EmployeeInfoBinding = EmployeeInfoBinding.inflate(view.layoutInflater)
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
@@ -33,8 +33,8 @@ class PlacemarkPresenter(private val view: PlacemarkView) {
     }
 
     fun doAddOrSave(title: String, description: String) {
-        placemark.title = title
-        placemark.description = description
+        placemark.name = title
+        placemark.bio = description
         if (edit) {
             app.placemarks.update(placemark)
         } else {
@@ -71,8 +71,8 @@ class PlacemarkPresenter(private val view: PlacemarkView) {
     }
 
     fun cachePlacemark (title: String, description: String) {
-        placemark.title = title;
-        placemark.description = description
+        placemark.name = title;
+        placemark.bio = description
     }
 
     private fun registerImagePickerCallback() {

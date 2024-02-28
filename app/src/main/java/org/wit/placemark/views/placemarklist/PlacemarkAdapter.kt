@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import org.wit.placemark.databinding.CardPlacemarkBinding
-import org.wit.placemark.models.PlacemarkModel
+import org.wit.placemark.models.EmployeeModel
 
 interface PlacemarkListener {
-    fun onPlacemarkClick(placemark: PlacemarkModel, position : Int)
+    fun onPlacemarkClick(placemark: EmployeeModel, position : Int)
 }
 
-class PlacemarkAdapter constructor(private var placemarks: List<PlacemarkModel>,
+class PlacemarkAdapter constructor(private var placemarks: List<EmployeeModel>,
                                    private val listener: PlacemarkListener) :
         RecyclerView.Adapter<PlacemarkAdapter.MainHolder>() {
 
@@ -32,9 +32,9 @@ class PlacemarkAdapter constructor(private var placemarks: List<PlacemarkModel>,
     class MainHolder(private val binding : CardPlacemarkBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(placemark: PlacemarkModel, listener: PlacemarkListener) {
-            binding.employeeName.text = placemark.title
-            binding.employeeBio.text = placemark.description
+        fun bind(placemark: EmployeeModel, listener: PlacemarkListener) {
+            binding.employeeName.text = placemark.name
+            binding.employeeBio.text = placemark.bio
             Picasso.get().load(placemark.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onPlacemarkClick(placemark,adapterPosition) }
         }

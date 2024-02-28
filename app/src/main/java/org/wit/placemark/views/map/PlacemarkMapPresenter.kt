@@ -19,7 +19,7 @@ class PlacemarkMapPresenter(val view: PlacemarkMapView) {
         map.setOnMarkerClickListener(view)
         app.placemarks.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
-            val options = MarkerOptions().title(it.title).position(loc)
+            val options = MarkerOptions().title(it.name).position(loc)
             map.addMarker(options)?.tag = it.id
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
         }
