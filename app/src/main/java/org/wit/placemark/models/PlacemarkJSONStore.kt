@@ -15,6 +15,7 @@ val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
     .create()
 val listType: Type = object : TypeToken<ArrayList<PlacemarkModel>>() {}.type
 
+
 fun generateRandomId(): Long {
     return Random().nextLong()
 }
