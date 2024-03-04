@@ -33,11 +33,11 @@ class EmployeeMapView : AppCompatActivity() , GoogleMap.OnMarkerClickListener{
             presenter.doPopulateMap(it)
         }
     }
-    fun showPlacemark(placemark: EmployeeModel) {
-        contentBinding.currentTitle.text = placemark.name
-        contentBinding.currentDescription.text = placemark.bio
+    fun showEmployee(employee: EmployeeModel) {
+        contentBinding.currentTitle.text = employee.name
+        contentBinding.currentDescription.text = employee.bio
         Picasso.get()
-            .load(placemark.image)
+            .load(employee.image)
             .into(contentBinding.currentImage)
     }
 

@@ -15,7 +15,7 @@ import timber.log.Timber
 
 class EmployeePresenter(private val view: EmployeeView) {
 
-    var placemark = EmployeeModel()
+    var employee = EmployeeModel()
     var app: MainApp = view.application as MainApp
     var binding: EmployeeInfoBinding = EmployeeInfoBinding.inflate(view.layoutInflater)
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
@@ -23,24 +23,24 @@ class EmployeePresenter(private val view: EmployeeView) {
     var edit = false;
 
     init {
-        if (view.intent.hasExtra("placemark_edit")) {
+        if (view.intent.hasExtra("employee_edit")) {
             edit = true
-            placemark = view.intent.extras?.getParcelable("placemark_edit")!!
-            view.showPlacemark(placemark)
+            employee = view.intent.extras?.getParcelable("employee_edit")!!
+            view.showEmployee(employee)
         }
         registerImagePickerCallback()
         registerMapCallback()
     }
 
     fun doAddOrSave(title: String, bio: String, email: String, phoneNum: String) {
-        placemark.name = title
-        placemark.bio = bio
-        placemark.email = email
-        placemark.phone = phoneNum
+        employee.name = title
+        employee.bio = bio
+        employee.email = email
+        employee.phone = phoneNum
         if (edit) {
-            app.placemarks.update(placemark)
+            app.employees.update(employee)
         } else {
-            app.placemarks.create(placemark)
+            app.employees.create(employee)
         }
         view.setResult(RESULT_OK)
         view.finish()
@@ -52,7 +52,7 @@ class EmployeePresenter(private val view: EmployeeView) {
 
     fun doDelete() {
         view.setResult(99)
-        app.placemarks.delete(placemark)
+        app.employees.delete(employee)
         view.finish()
     }
 
@@ -62,21 +62,21 @@ class EmployeePresenter(private val view: EmployeeView) {
 
     fun doSetLocation() {
         val location = Location(52.245696, -7.139102, 15f)
-        if (placemark.zoom != 0f) {
-            location.lat =  placemark.lat
-            location.lng = placemark.lng
-            location.zoom = placemark.zoom
+        if (employee.zoom != 0f) {
+            location.lat =  employee.lat
+            location.lng = employee.lng
+            location.zoom = employee.zoom
         }
         val launcherIntent = Intent(view, EditLocationView::class.java)
             .putExtra("location", location)
         mapIntentLauncher.launch(launcherIntent)
     }
 
-    fun cachePlacemark (title: String, description: String, email: String, phoneNum: String) {
-        placemark.name = title;
-        placemark.bio = description;
-        placemark.email = email;
-        placemark.phone = phoneNum;
+    fun casheEmployee (title: String, description: String, email: String, phoneNum: String) {
+        employee.name = title;
+        employee.bio = description;
+        employee.email = email;
+        employee.phone = phoneNum;
     }
 
     private fun registerImagePickerCallback() {
@@ -87,10 +87,10 @@ class EmployeePresenter(private val view: EmployeeView) {
                     AppCompatActivity.RESULT_OK -> {
                         if (result.data != null) {
                             Timber.i("Got Result ${result.data!!.data}")
-                            placemark.image = result.data!!.data!!
-                            view.contentResolver.takePersistableUriPermission(placemark.image,
+                            employee.image = result.data!!.data!!
+                            view.contentResolver.takePersistableUriPermission(employee.image,
                                 Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                            view.updateImage(placemark.image)
+                            view.updateImage(employee.image)
                         } // end of if
                     }
                     AppCompatActivity.RESULT_CANCELED -> { } else -> { }
@@ -108,9 +108,9 @@ class EmployeePresenter(private val view: EmployeeView) {
                             Timber.i("Got Location ${result.data.toString()}")
                             val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             Timber.i("Location == $location")
-                            placemark.lat = location.lat
-                            placemark.lng = location.lng
-                            placemark.zoom = location.zoom
+                            employee.lat = location.lat
+                            employee.lng = location.lng
+                            employee.zoom = location.zoom
                         } // end of if
                     }
                     AppCompatActivity.RESULT_CANCELED -> { } else -> { }

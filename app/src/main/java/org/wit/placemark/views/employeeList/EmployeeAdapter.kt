@@ -8,12 +8,12 @@ import org.wit.placemark.databinding.CardEmployeeBinding
 import org.wit.placemark.models.EmployeeModel
 
 interface PlacemarkListener {
-    fun onPlacemarkClick(placemark: EmployeeModel, position : Int)
+    fun onEmployeeClick(employee: EmployeeModel, position : Int)
 }
 
-class PlacemarkAdapter constructor(private var placemarks: List<EmployeeModel>,
+class EmployeeAdapter constructor(private var employees: List<EmployeeModel>,
                                    private val listener: PlacemarkListener) :
-        RecyclerView.Adapter<PlacemarkAdapter.MainHolder>() {
+        RecyclerView.Adapter<EmployeeAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardEmployeeBinding
@@ -23,22 +23,22 @@ class PlacemarkAdapter constructor(private var placemarks: List<EmployeeModel>,
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val placemark = placemarks[holder.adapterPosition]
-        holder.bind(placemark, listener)
+        val employee = employees[holder.adapterPosition]
+        holder.bind(employee, listener)
     }
 
-    override fun getItemCount(): Int = placemarks.size
+    override fun getItemCount(): Int = employees.size
 
     class MainHolder(private val binding : CardEmployeeBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(placemark: EmployeeModel, listener: PlacemarkListener) {
-            binding.employeeCardName.text = placemark.name
-            binding.employeeCardBio.text = placemark.bio
-            binding.employeeCardEmail.text = placemark.email
-            binding.employeeCardPhoneNum.text = placemark.phone
-            Picasso.get().load(placemark.image).resize(200,200).into(binding.imageIcon)
-            binding.root.setOnClickListener { listener.onPlacemarkClick(placemark,adapterPosition) }
+        fun bind(employee: EmployeeModel, listener: PlacemarkListener) {
+            binding.employeeCardName.text = employee.name
+            binding.employeeCardBio.text = employee.bio
+            binding.employeeCardEmail.text = employee.email
+            binding.employeeCardPhoneNum.text = employee.phone
+            Picasso.get().load(employee.image).resize(200,200).into(binding.imageIcon)
+            binding.root.setOnClickListener { listener.onEmployeeClick(employee,adapterPosition) }
         }
     }
 }

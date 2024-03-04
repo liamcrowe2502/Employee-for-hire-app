@@ -8,12 +8,12 @@ import timber.log.Timber.Forest.i
 
 class MainApp : Application() {
 
-    lateinit var placemarks: EmployeeStore
+    lateinit var employees: EmployeeStore
 
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        placemarks = EmployeeJSONStore(applicationContext)
+        employees = EmployeeJSONStore(applicationContext)
         i("Placemark started")
     }
 }

@@ -6,7 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.placemark.R
-import org.wit.placemark.adapters.PlacemarkAdapter
+import org.wit.placemark.adapters.EmployeeAdapter
 import org.wit.placemark.adapters.PlacemarkListener
 import org.wit.placemark.databinding.ActivityEmployeeListBinding
 import org.wit.placemark.main.MainApp
@@ -40,25 +40,25 @@ class EmployeeListView : AppCompatActivity(), PlacemarkListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_add -> { presenter.doAddPlacemark() }
-            R.id.item_map -> { presenter.doShowPlacemarksMap() }
+            R.id.item_add -> { presenter.doAddEmployee() }
+            R.id.item_map -> { presenter.doShowEmployeesMap() }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onPlacemarkClick(placemark: EmployeeModel, position: Int) {
+    override fun onEmployeeClick(placemark: EmployeeModel, position: Int) {
         this.position = position
-        presenter.doEditPlacemark(placemark, this.position)
+        presenter.doEditEmployee(placemark, this.position)
     }
 
     private fun loadPlacemarks() {
-        binding.recyclerView.adapter = PlacemarkAdapter(presenter.getPlacemarks(), this)
+        binding.recyclerView.adapter = EmployeeAdapter(presenter.getEmployees(), this)
         onRefresh()
     }
 
     fun onRefresh() {
         binding.recyclerView.adapter?.
-        notifyItemRangeChanged(0,presenter.getPlacemarks().size)
+        notifyItemRangeChanged(0,presenter.getEmployees().size)
     }
 
     fun onDelete(position : Int) {

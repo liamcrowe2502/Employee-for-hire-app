@@ -12,6 +12,6 @@ fun showImagePicker(intentLauncher: ActivityResultLauncher<Intent>, context: Con
     imagePickerTargetIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     imagePickerTargetIntent.type = "image/*"
     imagePickerTargetIntent = Intent.createChooser(imagePickerTargetIntent,
-        context.getString(R.string.select_placemark_image))
+        context.getString(R.string.select_employee_image))
     intentLauncher.launch(imagePickerTargetIntent)
 }

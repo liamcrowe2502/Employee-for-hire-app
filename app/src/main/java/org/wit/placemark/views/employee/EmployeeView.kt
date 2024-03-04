@@ -16,7 +16,7 @@ class EmployeeView : AppCompatActivity() {
 
     private lateinit var binding: EmployeeInfoBinding
     private lateinit var presenter: EmployeePresenter
-    var placemark = EmployeeModel()
+    var employee = EmployeeModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +30,13 @@ class EmployeeView : AppCompatActivity() {
         presenter = EmployeePresenter(this)
 
         binding.chooseImage.setOnClickListener {
-            presenter.cachePlacemark(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
+            presenter.casheEmployee(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
                 binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
             presenter.doSelectImage()
         }
 
-        binding.placemarkLocation.setOnClickListener {
-            presenter.cachePlacemark(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
+        binding.employeeLocation.setOnClickListener {
+            presenter.casheEmployee(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
                 binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
             presenter.doSetLocation()
         }
@@ -53,10 +53,9 @@ class EmployeeView : AppCompatActivity() {
         when (item.itemId) {
             R.id.item_save -> {
                 if (binding.employeeInfoName.text.toString().isEmpty()) {
-                    Snackbar.make(binding.root, R.string.enter_placemark_title, Snackbar.LENGTH_LONG)
+                    Snackbar.make(binding.root, R.string.enter_employee_title, Snackbar.LENGTH_LONG)
                         .show()
                 } else {
-                    // presenter.cachePlacemark(binding.placemarkTitle.text.toString(), binding.description.text.toString())
                     presenter.doAddOrSave(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
                         binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
                 }
@@ -71,16 +70,16 @@ class EmployeeView : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun showPlacemark(placemark: EmployeeModel) {
-        binding.employeeInfoName.setText(placemark.name)
-        binding.employeeInfoBio.setText(placemark.bio)
-        binding.employeeInfoEmail.setText(placemark.email)
-        binding.employeeInfoPhoneNum.setText(placemark.phone)
+    fun showEmployee(employee: EmployeeModel) {
+        binding.employeeInfoName.setText(employee.name)
+        binding.employeeInfoBio.setText(employee.bio)
+        binding.employeeInfoEmail.setText(employee.email)
+        binding.employeeInfoPhoneNum.setText(employee.phone)
         Picasso.get()
-            .load(placemark.image)
-            .into(binding.placemarkImage)
-        if (placemark.image != Uri.EMPTY) {
-            binding.chooseImage.setText(R.string.change_placemark_image)
+            .load(employee.image)
+            .into(binding.employeeImage)
+        if (employee.image != Uri.EMPTY) {
+            binding.chooseImage.setText(R.string.change_employee_image)
         }
 
     }
@@ -89,8 +88,8 @@ class EmployeeView : AppCompatActivity() {
         i("Image updated")
         Picasso.get()
             .load(image)
-            .into(binding.placemarkImage)
-        binding.chooseImage.setText(R.string.change_placemark_image)
+            .into(binding.employeeImage)
+        binding.chooseImage.setText(R.string.change_employee_image)
     }
 
 }

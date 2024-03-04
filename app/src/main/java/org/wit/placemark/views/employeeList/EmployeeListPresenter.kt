@@ -22,21 +22,21 @@ class EmployeeListPresenter(val view: EmployeeListView) {
         registerRefreshCallback()
     }
 
-    fun getPlacemarks() = app.placemarks.findAll()
+    fun getEmployees() = app.employees.findAll()
 
-    fun doAddPlacemark() {
+    fun doAddEmployee() {
         val launcherIntent = Intent(view, EmployeeView::class.java)
         refreshIntentLauncher.launch(launcherIntent)
     }
 
-    fun doEditPlacemark(placemark: EmployeeModel, pos: Int) {
+    fun doEditEmployee(employee: EmployeeModel, pos: Int) {
         val launcherIntent = Intent(view, EmployeeView::class.java)
-        launcherIntent.putExtra("placemark_edit", placemark)
+        launcherIntent.putExtra("employee_edit", employee)
         position = pos
         refreshIntentLauncher.launch(launcherIntent)
     }
 
-    fun doShowPlacemarksMap() {
+    fun doShowEmployeesMap() {
         val launcherIntent = Intent(view, EmployeeMapView::class.java)
         mapIntentLauncher.launch(launcherIntent)
     }

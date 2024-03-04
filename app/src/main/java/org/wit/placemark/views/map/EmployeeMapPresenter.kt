@@ -17,7 +17,7 @@ class EmployeeMapPresenter(val view: EmployeeMapView) {
     fun doPopulateMap(map: GoogleMap) {
         map.uiSettings.setZoomControlsEnabled(true)
         map.setOnMarkerClickListener(view)
-        app.placemarks.findAll().forEach {
+        app.employees.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
             val options = MarkerOptions().title(it.name).position(loc)
             map.addMarker(options)?.tag = it.id
@@ -27,7 +27,7 @@ class EmployeeMapPresenter(val view: EmployeeMapView) {
 
     fun doMarkerSelected(marker: Marker) {
         val tag = marker.tag as Long
-        val placemark = app.placemarks.findById(tag)
-        if (placemark != null) view.showPlacemark(placemark)
+        val employee = app.employees.findById(tag)
+        if (employee != null) view.showEmployee(employee)
     }
 }
