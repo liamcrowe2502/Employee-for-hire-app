@@ -1,4 +1,4 @@
-package org.wit.placemark.views.placemark
+package org.wit.placemark.views.employee
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -13,7 +13,7 @@ import org.wit.placemark.showImagePicker
 import org.wit.placemark.views.editlocation.EditLocationView
 import timber.log.Timber
 
-class PlacemarkPresenter(private val view: PlacemarkView) {
+class EmployeePresenter(private val view: EmployeeView) {
 
     var placemark = EmployeeModel()
     var app: MainApp = view.application as MainApp
@@ -32,9 +32,11 @@ class PlacemarkPresenter(private val view: PlacemarkView) {
         registerMapCallback()
     }
 
-    fun doAddOrSave(title: String, description: String) {
+    fun doAddOrSave(title: String, bio: String, email: String, phoneNum: String) {
         placemark.name = title
-        placemark.bio = description
+        placemark.bio = bio
+        placemark.email = email
+        placemark.phone = phoneNum
         if (edit) {
             app.placemarks.update(placemark)
         } else {
@@ -70,9 +72,11 @@ class PlacemarkPresenter(private val view: PlacemarkView) {
         mapIntentLauncher.launch(launcherIntent)
     }
 
-    fun cachePlacemark (title: String, description: String) {
+    fun cachePlacemark (title: String, description: String, email: String, phoneNum: String) {
         placemark.name = title;
-        placemark.bio = description
+        placemark.bio = description;
+        placemark.email = email;
+        placemark.phone = phoneNum;
     }
 
     private fun registerImagePickerCallback() {

@@ -1,4 +1,4 @@
-package org.wit.placemark.views.placemark
+package org.wit.placemark.views.employee
 
 import android.net.Uri
 import android.os.Bundle
@@ -12,10 +12,10 @@ import org.wit.placemark.databinding.EmployeeInfoBinding
 import org.wit.placemark.models.EmployeeModel
 import timber.log.Timber.Forest.i
 
-class PlacemarkView : AppCompatActivity() {
+class EmployeeView : AppCompatActivity() {
 
     private lateinit var binding: EmployeeInfoBinding
-    private lateinit var presenter: PlacemarkPresenter
+    private lateinit var presenter: EmployeePresenter
     var placemark = EmployeeModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,21 +27,23 @@ class PlacemarkView : AppCompatActivity() {
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
 
-        presenter = PlacemarkPresenter(this)
+        presenter = EmployeePresenter(this)
 
         binding.chooseImage.setOnClickListener {
-            presenter.cachePlacemark(binding.employeeName.text.toString(), binding.employeeBio.text.toString())
+            presenter.cachePlacemark(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
+                binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
             presenter.doSelectImage()
         }
 
         binding.placemarkLocation.setOnClickListener {
-            presenter.cachePlacemark(binding.employeeName.text.toString(), binding.employeeBio.text.toString())
+            presenter.cachePlacemark(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
+                binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
             presenter.doSetLocation()
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_placemark, menu)
+        menuInflater.inflate(R.menu.menu_employee, menu)
         val deleteMenu: MenuItem = menu.findItem(R.id.item_delete)
         deleteMenu.isVisible = presenter.edit
         return super.onCreateOptionsMenu(menu)
@@ -50,12 +52,13 @@ class PlacemarkView : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_save -> {
-                if (binding.employeeName.text.toString().isEmpty()) {
+                if (binding.employeeInfoName.text.toString().isEmpty()) {
                     Snackbar.make(binding.root, R.string.enter_placemark_title, Snackbar.LENGTH_LONG)
                         .show()
                 } else {
                     // presenter.cachePlacemark(binding.placemarkTitle.text.toString(), binding.description.text.toString())
-                    presenter.doAddOrSave(binding.employeeName.text.toString(), binding.employeeBio.text.toString())
+                    presenter.doAddOrSave(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
+                        binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
                 }
             }
             R.id.item_delete -> {
@@ -69,10 +72,10 @@ class PlacemarkView : AppCompatActivity() {
     }
 
     fun showPlacemark(placemark: EmployeeModel) {
-        binding.employeeName.setText(placemark.name)
-        binding.employeeBio.setText(placemark.bio)
-        binding.email.setText(placemark.email)
-        binding.phoneNum.setText(placemark.phone)
+        binding.employeeInfoName.setText(placemark.name)
+        binding.employeeInfoBio.setText(placemark.bio)
+        binding.employeeInfoEmail.setText(placemark.email)
+        binding.employeeInfoPhoneNum.setText(placemark.phone)
         Picasso.get()
             .load(placemark.image)
             .into(binding.placemarkImage)

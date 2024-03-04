@@ -1,15 +1,15 @@
-package org.wit.placemark.views.placemarklist
+package org.wit.placemark.views.employeeList
 
 import android.app.Activity
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import org.wit.placemark.views.placemark.PlacemarkView
+import org.wit.placemark.views.employee.EmployeeView
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.EmployeeModel
-import org.wit.placemark.views.map.PlacemarkMapView
+import org.wit.placemark.views.map.EmployeeMapView
 
-class PlacemarkListPresenter(val view: PlacemarkListView) {
+class EmployeeListPresenter(val view: EmployeeListView) {
 
     var app: MainApp
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
@@ -25,19 +25,19 @@ class PlacemarkListPresenter(val view: PlacemarkListView) {
     fun getPlacemarks() = app.placemarks.findAll()
 
     fun doAddPlacemark() {
-        val launcherIntent = Intent(view, PlacemarkView::class.java)
+        val launcherIntent = Intent(view, EmployeeView::class.java)
         refreshIntentLauncher.launch(launcherIntent)
     }
 
     fun doEditPlacemark(placemark: EmployeeModel, pos: Int) {
-        val launcherIntent = Intent(view, PlacemarkView::class.java)
+        val launcherIntent = Intent(view, EmployeeView::class.java)
         launcherIntent.putExtra("placemark_edit", placemark)
         position = pos
         refreshIntentLauncher.launch(launcherIntent)
     }
 
     fun doShowPlacemarksMap() {
-        val launcherIntent = Intent(view, PlacemarkMapView::class.java)
+        val launcherIntent = Intent(view, EmployeeMapView::class.java)
         mapIntentLauncher.launch(launcherIntent)
     }
 

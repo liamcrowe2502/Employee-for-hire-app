@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.placemark.views.placemark.PlacemarkView">
+    tools:context="org.wit.placemark.views.employee.EmployeeView">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/employeeName"
+            android:id="@+id/employeeInfoName"
             android:layout_width="365dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/employeeBio"
+            android:id="@+id/employeeInfoBio"
             android:layout_width="365dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
@@ -63,10 +63,10 @@
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/employeeName" />
+            app:layout_constraintTop_toBottomOf="@+id/employeeInfoName" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/employeeInfoEmail"
             android:layout_width="365dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
@@ -81,7 +81,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/phoneNum"
+            android:id="@+id/employeeInfoPhoneNum"
             android:layout_width="365dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
@@ -93,7 +93,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/employeeName" />
+            app:layout_constraintTop_toBottomOf="@+id/employeeInfoName" />
 
         <Button
             android:id="@+id/chooseImage"
@@ -101,8 +101,8 @@
             android:layout_height="wrap_content"
             android:text="@string/button_addImage"
             app:layout_constraintBottom_toTopOf="@+id/placemarkImage"
-            app:layout_constraintStart_toStartOf="@+id/employeeBio"
-            app:layout_constraintTop_toBottomOf="@+id/employeeBio"
+            app:layout_constraintStart_toStartOf="@+id/employeeInfoBio"
+            app:layout_constraintTop_toBottomOf="@+id/employeeInfoBio"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
@@ -111,9 +111,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:text="@string/button_location"
-            app:layout_constraintEnd_toEndOf="@+id/employeeBio"
+            app:layout_constraintEnd_toEndOf="@+id/employeeInfoBio"
             app:layout_constraintStart_toEndOf="@+id/chooseImage"
-            app:layout_constraintTop_toBottomOf="@+id/employeeBio" />
+            app:layout_constraintTop_toBottomOf="@+id/employeeInfoBio" />
 
         <ImageView
             android:id="@+id/placemarkImage"

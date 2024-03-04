@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import org.wit.placemark.databinding.CardPlacemarkBinding
+import org.wit.placemark.databinding.CardEmployeeBinding
 import org.wit.placemark.models.EmployeeModel
 
 interface PlacemarkListener {
@@ -16,7 +16,7 @@ class PlacemarkAdapter constructor(private var placemarks: List<EmployeeModel>,
         RecyclerView.Adapter<PlacemarkAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        val binding = CardPlacemarkBinding
+        val binding = CardEmployeeBinding
                 .inflate(LayoutInflater.from(parent.context), parent, false)
 
         return MainHolder(binding)
@@ -29,12 +29,14 @@ class PlacemarkAdapter constructor(private var placemarks: List<EmployeeModel>,
 
     override fun getItemCount(): Int = placemarks.size
 
-    class MainHolder(private val binding : CardPlacemarkBinding) :
+    class MainHolder(private val binding : CardEmployeeBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
         fun bind(placemark: EmployeeModel, listener: PlacemarkListener) {
-            binding.employeeName.text = placemark.name
-            binding.employeeBio.text = placemark.bio
+            binding.employeeCardName.text = placemark.name
+            binding.employeeCardBio.text = placemark.bio
+            binding.employeeCardEmail.text = placemark.email
+            binding.employeeCardPhoneNum.text = placemark.phone
             Picasso.get().load(placemark.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onPlacemarkClick(placemark,adapterPosition) }
         }

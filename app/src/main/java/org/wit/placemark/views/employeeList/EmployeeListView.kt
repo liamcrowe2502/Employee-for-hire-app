@@ -1,4 +1,4 @@
-package org.wit.placemark.views.placemarklist
+package org.wit.placemark.views.employeeList
 
 import android.os.Bundle
 import android.view.Menu
@@ -8,24 +8,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.placemark.R
 import org.wit.placemark.adapters.PlacemarkAdapter
 import org.wit.placemark.adapters.PlacemarkListener
-import org.wit.placemark.databinding.ActivityPlacemarkListBinding
+import org.wit.placemark.databinding.ActivityEmployeeListBinding
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.EmployeeModel
 
-class PlacemarkListView : AppCompatActivity(), PlacemarkListener {
+class EmployeeListView : AppCompatActivity(), PlacemarkListener {
 
     lateinit var app: MainApp
-    private lateinit var binding: ActivityPlacemarkListBinding
-    lateinit var presenter: PlacemarkListPresenter
+    private lateinit var binding: ActivityEmployeeListBinding
+    lateinit var presenter: EmployeeListPresenter
     private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPlacemarkListBinding.inflate(layoutInflater)
+        binding = ActivityEmployeeListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
-        presenter = PlacemarkListPresenter(this)
+        presenter = EmployeeListPresenter(this)
         app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)

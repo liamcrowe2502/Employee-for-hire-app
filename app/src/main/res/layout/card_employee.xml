@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/employeeName"
+            android:id="@+id/employeeCardName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -40,7 +40,7 @@
             tools:text="Name" />
 
         <TextView
-            android:id="@+id/employeeBio"
+            android:id="@+id/employeeCardBio"
             android:layout_width="134dp"
             android:layout_height="41dp"
             android:layout_marginTop="4dp"
@@ -48,11 +48,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.756"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
-            app:layout_constraintTop_toBottomOf="@id/employeeName"
+            app:layout_constraintTop_toBottomOf="@id/employeeInfoName"
             tools:text="Bio" />
 
         <TextView
-            android:id="@+id/employeeEmail"
+            android:id="@+id/employeeCardEmail"
             android:layout_width="121dp"
             android:layout_height="37dp"
             android:layout_marginTop="8dp"
@@ -65,7 +65,7 @@
             tools:text="Email" />
 
         <TextView
-            android:id="@+id/employeeNum"
+            android:id="@+id/employeeCardPhoneNum"
             android:layout_width="71dp"
             android:layout_height="19dp"
             android:layout_marginTop="16dp"
@@ -73,7 +73,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.081"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
-            app:layout_constraintTop_toBottomOf="@id/employeeName"
+            app:layout_constraintTop_toBottomOf="@id/employeeInfoName"
             tools:text="Ph Number" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
