@@ -31,13 +31,15 @@ class EmployeeView : AppCompatActivity() {
 
         binding.chooseImage.setOnClickListener {
             presenter.casheEmployee(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
-                binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
+                binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L
+            )
             presenter.doSelectImage()
         }
 
         binding.employeeLocation.setOnClickListener {
             presenter.casheEmployee(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
-                binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
+                binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L
+            )
             presenter.doSetLocation()
         }
     }
@@ -57,7 +59,8 @@ class EmployeeView : AppCompatActivity() {
                         .show()
                 } else {
                     presenter.doAddOrSave(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
-                        binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString())
+                        binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L
+                    )
                 }
             }
             R.id.item_delete -> {
@@ -74,7 +77,7 @@ class EmployeeView : AppCompatActivity() {
         binding.employeeInfoName.setText(employee.name)
         binding.employeeInfoBio.setText(employee.bio)
         binding.employeeInfoEmail.setText(employee.email)
-        binding.employeeInfoPhoneNum.setText(employee.phone)
+        binding.employeeInfoPhoneNum.setText(employee.phone.toString())
         Picasso.get()
             .load(employee.image)
             .into(binding.employeeImage)

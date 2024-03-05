@@ -32,7 +32,7 @@ class EmployeePresenter(private val view: EmployeeView) {
         registerMapCallback()
     }
 
-    fun doAddOrSave(title: String, bio: String, email: String, phoneNum: String) {
+    fun doAddOrSave(title: String, bio: String, email: String, phoneNum: Long) {
         employee.name = title
         employee.bio = bio
         employee.email = email
@@ -72,7 +72,7 @@ class EmployeePresenter(private val view: EmployeeView) {
         mapIntentLauncher.launch(launcherIntent)
     }
 
-    fun casheEmployee (title: String, description: String, email: String, phoneNum: String) {
+    fun casheEmployee (title: String, description: String, email: String, phoneNum: Long) {
         employee.name = title;
         employee.bio = description;
         employee.email = email;
