@@ -14,20 +14,11 @@
         android:layout_height="265dp"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/employeeCardHireNotice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Not Available"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageIcon"
-            app:layout_constraintTop_toBottomOf="@+id/employeeCardBio" />
-
         <ImageView
             android:id="@+id/imageIcon"
             android:layout_width="112dp"
             android:layout_height="162dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:contentDescription="@string/change_employee_image"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,64 +28,78 @@
 
         <TextView
             android:id="@+id/employeeCardName"
-            android:layout_width="84dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="220dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
             android:textAlignment="viewStart"
-            android:textSize="30sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
 
         <TextView
             android:id="@+id/employeeCardEmail"
-            android:layout_width="222dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="220dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
             android:textAlignment="viewStart"
-            android:textSize="30sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
             app:layout_constraintTop_toBottomOf="@id/employeeCardName"
             tools:text="Email" />
 
         <TextView
             android:id="@+id/employeeCardPhoneNum"
-            android:layout_width="173dp"
+            android:layout_width="220dp"
             android:layout_height="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
             app:layout_constraintTop_toBottomOf="@id/employeeCardEmail"
             tools:text="Ph Number" />
 
         <TextView
             android:id="@+id/employeeCardBio"
-            android:layout_width="244dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="220dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.363"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
             app:layout_constraintTop_toBottomOf="@id/employeeCardPhoneNum"
             tools:text="Bio" />
 
         <TextView
+            android:id="@+id/employeeCardHireNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="14sp"
+            android:text="Not Available"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="@+id/imageIcon"
+            app:layout_constraintTop_toBottomOf="@+id/employeeCardHireNotice2" />
+
+        <TextView
             android:id="@+id/employeeCardHireNotice2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:textSize="14sp"
             android:text="Looking for work?"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageIcon"
-            app:layout_constraintTop_toBottomOf="@+id/employeeCardBio" />
+            app:layout_constraintStart_toStartOf="@+id/imageIcon"
+            app:layout_constraintTop_toBottomOf="@+id/imageIcon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
