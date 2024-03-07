@@ -21,7 +21,6 @@ class EmployeeView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         binding = EmployeeInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
@@ -29,16 +28,32 @@ class EmployeeView : AppCompatActivity() {
 
         presenter = EmployeePresenter(this)
 
+        binding.employeeInfoCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.employeeInfoCheckbox.text = getString(R.string.open_to_work)
+            } else {
+                binding.employeeInfoCheckbox.text = getString(R.string.not_available)
+            }
+        }
+
         binding.chooseImage.setOnClickListener {
-            presenter.casheEmployee(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
-                binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L
+            presenter.casheEmployee(
+                binding.employeeInfoName.text.toString(),
+                binding.employeeInfoBio.text.toString(),
+                binding.employeeInfoEmail.text.toString(),
+                binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L,
+                binding.employeeInfoCheckbox.isChecked
             )
             presenter.doSelectImage()
         }
 
         binding.employeeLocation.setOnClickListener {
-            presenter.casheEmployee(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
-                binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L
+            presenter.casheEmployee(
+                binding.employeeInfoName.text.toString(),
+                binding.employeeInfoBio.text.toString(),
+                binding.employeeInfoEmail.text.toString(),
+                binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L,
+                binding.employeeInfoCheckbox.isChecked
             )
             presenter.doSetLocation()
         }
@@ -58,8 +73,12 @@ class EmployeeView : AppCompatActivity() {
                     Snackbar.make(binding.root, R.string.enter_employee_title, Snackbar.LENGTH_LONG)
                         .show()
                 } else {
-                    presenter.doAddOrSave(binding.employeeInfoName.text.toString(), binding.employeeInfoBio.text.toString(),
-                        binding.employeeInfoEmail.text.toString(), binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L
+                    presenter.doAddOrSave(
+                        binding.employeeInfoName.text.toString(),
+                        binding.employeeInfoBio.text.toString(),
+                        binding.employeeInfoEmail.text.toString(),
+                        binding.employeeInfoPhoneNum.text.toString().toLongOrNull() ?: 0L,
+                        binding.employeeInfoCheckbox.isChecked
                     )
                 }
             }
@@ -81,18 +100,25 @@ class EmployeeView : AppCompatActivity() {
         Picasso.get()
             .load(employee.image)
             .into(binding.employeeImage)
+
+        // Set the text for the hire notice based on work status
+        if (employee.work) {
+            binding.employeeInfoCheckbox.text = getString(R.string.open_to_work)
+        } else {
+            binding.employeeInfoCheckbox.text = getString(R.string.not_available)
+        }
+
         if (employee.image != Uri.EMPTY) {
             binding.chooseImage.setText(R.string.change_employee_image)
         }
-
     }
 
-    fun updateImage(image: Uri){
+
+    fun updateImage(image: Uri) {
         i("Image updated")
         Picasso.get()
             .load(image)
             .into(binding.employeeImage)
         binding.chooseImage.setText(R.string.change_employee_image)
     }
-
 }

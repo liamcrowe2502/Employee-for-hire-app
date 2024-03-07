@@ -17,7 +17,7 @@ class Splash : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.hide()
         Handler().postDelayed({
-            val intent = Intent(this@Splash, EmployeeListView::class.java)
+            val intent = Intent(this@Splash, SignUpActivity::class.java)
             startActivity(intent)
             finish()
         }, 4000)

@@ -32,11 +32,12 @@ class EmployeePresenter(private val view: EmployeeView) {
         registerMapCallback()
     }
 
-    fun doAddOrSave(title: String, bio: String, email: String, phoneNum: Long) {
+    fun doAddOrSave(title: String, bio: String, email: String, phoneNum: Long, work: Boolean) {
         employee.name = title
         employee.bio = bio
         employee.email = email
         employee.phone = phoneNum
+        employee.work = work
         if (edit) {
             app.employees.update(employee)
         } else {
@@ -72,11 +73,12 @@ class EmployeePresenter(private val view: EmployeeView) {
         mapIntentLauncher.launch(launcherIntent)
     }
 
-    fun casheEmployee (title: String, description: String, email: String, phoneNum: Long) {
+    fun casheEmployee (title: String, description: String, email: String, phoneNum: Long, work: Boolean) {
         employee.name = title;
         employee.bio = description;
         employee.email = email;
         employee.phone = phoneNum;
+        employee.work = work;
     }
 
     private fun registerImagePickerCallback() {

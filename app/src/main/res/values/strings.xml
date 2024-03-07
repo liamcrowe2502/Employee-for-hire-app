@@ -17,4 +17,6 @@
     <string name="menu_deletePlacemark">Delete</string>
     <string name="title_activity_placemark_maps">Map of All Placemarks </string>
     <string name="menu_savePlacemark">Save</string>
+    <string name="open_to_work">Open to Work</string>
+    <string name="not_available">Not Available</string>
 </resources>

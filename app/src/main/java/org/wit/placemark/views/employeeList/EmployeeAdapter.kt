@@ -37,6 +37,7 @@ class EmployeeAdapter constructor(private var employees: List<EmployeeModel>,
             binding.employeeCardBio.text = employee.bio
             binding.employeeCardEmail.text = employee.email
             binding.employeeCardPhoneNum.text = employee.phone.toString()
+            binding.employeeCardHireNotice.text = employee.work.toString()
             Picasso.get().load(employee.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onEmployeeClick(employee,adapterPosition) }
         }

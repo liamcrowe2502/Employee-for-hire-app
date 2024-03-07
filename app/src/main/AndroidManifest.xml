@@ -17,10 +17,17 @@
         android:theme="@style/Theme.Placemark"
         tools:targetApi="31">
         <activity
+            android:name=".main.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.SignInActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -41,7 +48,6 @@
         <activity
             android:name=".views.employeeList.EmployeeListView"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -34,6 +34,7 @@ class EmployeeMemStore : EmployeeStore {
             findEmployee.bio = employee.bio
             findEmployee.email = employee.email
             findEmployee.phone = employee.phone
+            findEmployee.work = employee.work
             findEmployee.image = employee.image
             findEmployee.lat = employee.lat
             findEmployee.lng = employee.lng
