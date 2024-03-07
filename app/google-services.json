@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "787462384842",
+    "project_id": "employee-e8337",
+    "storage_bucket": "employee-e8337.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787462384842:android:7763b646dfb9d28e6c9833",
+        "android_client_info": {
+          "package_name": "org.wit.placemark"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2CjDAVilGu7hWHvCMu8l4SfGmo9q_GmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
