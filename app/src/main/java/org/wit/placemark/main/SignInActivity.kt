@@ -52,6 +52,7 @@ class SignInActivity : AppCompatActivity() {
         return password.matches(passwordRegex)
     }
 
+
     override fun onStart() {
         super.onStart()
 
