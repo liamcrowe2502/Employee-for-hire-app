@@ -34,7 +34,7 @@
         <activity
             android:name=".views.map.EmployeeMapView"
             android:exported="false"
-            android:label="@string/title_activity_placemark_maps"
+            android:label="@string/title_activity_employee_maps"
             android:theme="@style/Theme.Employee" />
 
         <meta-data

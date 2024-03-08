@@ -10,7 +10,9 @@ import org.wit.placemark.adapters.EmployeeAdapter
 import org.wit.placemark.adapters.PlacemarkListener
 import org.wit.placemark.databinding.ActivityEmployeeListBinding
 import org.wit.placemark.main.MainApp
+import org.wit.placemark.main.SignUpActivity
 import org.wit.placemark.models.EmployeeModel
+import android.content.Intent
 
 class EmployeeListView : AppCompatActivity(), PlacemarkListener {
 
@@ -42,6 +44,10 @@ class EmployeeListView : AppCompatActivity(), PlacemarkListener {
         when (item.itemId) {
             R.id.item_add -> { presenter.doAddEmployee() }
             R.id.item_map -> { presenter.doShowEmployeesMap() }
+            R.id.item_logout -> {
+                startActivity(Intent(this, SignUpActivity::class.java))
+                finish()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

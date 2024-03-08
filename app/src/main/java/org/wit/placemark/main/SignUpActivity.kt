@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity() {
             val pass = binding.passET.text.toString()
             val confirmPass = binding.confirmPassEt.text.toString()
 
-            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
+            if (email.isNotEmpty() && isValidPassword(pass) && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
 
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
@@ -45,9 +45,12 @@ class SignUpActivity : AppCompatActivity() {
                     Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this, "Fill in remaining fields or 1 upper, lower, number is needed", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    private fun isValidPassword(password: String): Boolean {
+        val passwordRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}\$")
+        return password.matches(passwordRegex)
     }
 }

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import org.wit.placemark.R
 import org.wit.placemark.databinding.ActivitySignInBinding
 import org.wit.placemark.views.employeeList.EmployeeListView
 
@@ -30,7 +29,7 @@ class SignInActivity : AppCompatActivity() {
             val email = binding.emailEt.text.toString()
             val pass = binding.passET.text.toString()
 
-            if (email.isNotEmpty() && pass.isNotEmpty()) {
+            if (email.isNotEmpty() && isValidPassword(pass)) {
 
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
@@ -42,10 +41,15 @@ class SignInActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Fill in remaining fields", Toast.LENGTH_SHORT).show()
 
             }
         }
+    }
+
+    private fun isValidPassword(password: String): Boolean {
+        val passwordRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}\$")
+        return password.matches(passwordRegex)
     }
 
     override fun onStart() {

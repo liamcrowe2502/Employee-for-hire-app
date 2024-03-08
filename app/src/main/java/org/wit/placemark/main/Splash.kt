@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import org.wit.placemark.R
-import org.wit.placemark.views.employeeList.EmployeeListView
 
 
 class Splash : AppCompatActivity() {
