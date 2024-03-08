@@ -1,37 +1,21 @@
 # Foobar
 
-Foobar is a Python library for dealing with word pluralization.
+This project is for recruiters to get contact information of the users who create a profile page
 
-## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+## Features
+* Create
+* Read
+* Update
+* Delete
+* Firebase Authentication
+* Splash Screen
+* Boolean checkbox
+* Add Image from gallery
+* Add Location
 
-```bash
-pip install foobar
-```
+## Screenshots
 
-## Usage
+## Setup
+There is no real setup apart from Firebase which you will just need to connect the authentication and relevant package in gradle.
 
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
